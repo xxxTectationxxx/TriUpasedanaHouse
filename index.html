@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kopi Kenangan Senja</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,700&family=Sacramento&family=Work+Sans:wght@100;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Feathers icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <!-- My Style -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- AlphineJS -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+
+    <!-- App -->
+    <script src="src/app.js" async></script>
+  </head>
+  <body>
+    <!-- Navbar Start -->
+    <nav class="navbar" x-data>
+      <a href="#" class="navbar-logo">TriUpasedana<span>House</span></a>
+
+      <div class="navbar-nav">
+        <a href="#hero">Home</a>
+        <a href="#about">Tentang Kami</a>
+        <a href="#menu">Menu</a>
+        <a href="#products">Produk</a>
+        <a href="#contact">Kontak</a>
+      </div>
+
+      <div class="navbar-extra">
+        <a href="#" id="search-button"><i data-feather="search"></i></a>
+        <a href="#" id="shopping-cart-button">
+          <i data-feather="shopping-cart"></i>
+          <span
+            class="quantity-badge"
+            x-show="$store.cart.quantity"
+            x-text="$store.cart.quantity"
+          ></span>
+        </a>
+        <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
+      </div>
+
+      <!-- Search Form start -->
+      <div class="search-form">
+        <input type="search" id="search-box" placeholder="search here..." />
+        <label for="search-box"><i data-feather="search"></i></label>
+      </div>
+      <!-- Search Form end -->
+
+      <!-- Shopping Cart start -->
+      <div class="shopping-cart">
+        <template x-for="(item, index) in $store.cart.items" x-key="index">
+          <div class="cart-item">
+            <img :src="`img/products/${item.img}`" :alt="item.name" />
+            <div class="item-detail">
+              <h3 x-text="item.name"></h3>
+              <div class="item-price">
+                <span x-text="rupiah(item.price)"></span> &times;
+                <button id="remove" @click="$store.cart.remove(item.id)">
+                  &minus;
+                </button>
+                <span x-text="item.quantity"></span>
+                <button id="add" @click="$store.cart.add(item)">&plus;</button>
+                &equals;
+                <span x-text="rupiah(item.total)"></span>
+              </div>
+            </div>
+          </div>
+        </template>
+        <h4 x-show="!$store.cart.items.length" style="margin-top: 1rem">
+          Cart Is Empty
+        </h4>
+        <h4 x-show="$store.cart.items.length">
+          Total : <span x-text="rupiah($store.cart.total)"></span>
+        </h4>
+
+        <!-- Form Start -->
+        <div class="form-container" x-show="$store.cart.items.length">
+          <form action="" id="checkoutForm">
+            <input
+              type="hidden"
+              name="items"
+              x-model="JSON.stringify($store.cart.items)"
+            />
+            <input type="hidden" name="items" x-model="$store.cart.total" />
+            <h5>Customer Detail</h5>
+            <label for="name">
+              <span>Nama</span>
+              <input type="text" name="name" id="name" />
+            </label>
+            <label for="email">
+              <span>Email</span>
+              <input type="email" name="email" id="email" />
+            </label>
+            <label for="phone">
+              <span>Phone</span>
+              <input type="number" name="phone" id="phone" autocomplete="off" />
+            </label>
+
+            <button
+              class="checkout-button disabled"
+              type="submit"
+              id="checkout-button"
+              value="checkout"
+            >
+              Checkout
+            </button>
+          </form>
+        </div>
+        <!-- Form End -->
+      </div>
+      <!-- Shopping Cart end -->
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Hero Section start -->
+    <section class="hero" id="hero">
+      <main class="content">
+        <h1>Rumah Tradisional <span>Bali</span></h1>
+        <p>
+          Nikmati tinggal dengan keluarga bali, menjelajahi desa, dan belajar
+          tentang budaya kedaerahan kami
+        </p>
+        <a href="#menu" class="cta">Beli Sekarang</a>
+      </main>
+    </section>
+    <!-- Hero Section end -->
+
+    <!-- About Section start -->
+    <section id="about" class="about">
+      <h2><span>Tentang</span> Kami</h2>
+
+      <div class="row">
+        <div class="about-img">
+          <img src="img/tentangkami/pintumasuk.jpg" alt="TentangKami" />
+        </div>
+        <div class="content">
+          <h3>Kenapa Rumah Kami</h3>
+          <p>
+            Rumah kami masih sangat membepertahankan budaya bali, bisa dilihat
+            dari pintu masuk kami yang masih menggunakan ukiran bernuasa bali.
+          </p>
+          <p>
+            Pada pintu masuk kami pun terdapat gapura yang disampinya, Tak hanya
+            itu, gapura yang menghiasi pintu masuk kami juga menjadi titik fokus
+            yang menawan. Dikelilingi oleh pepohonan yang rimbun, gapura
+            tersebut memberikan kesan sejuk dan menyambut setiap pengunjung
+            dengan hangatnya. Aura damai yang tercipta dari alam sekitar
+            mengundang pengunjung untuk memasuki dunia kami yang penuh dengan
+            keindahan dan kearifan budaya Bali yang abadi.
+          </p>
+        </div>
+      </div>
+      <br />
+      <br />
+      <br />
+
+      <div class="row2">
+        <div class="about-img">
+          <img src="img/tentangkami/halaman.jpg" alt="TentangKami" />
+        </div>
+        <div class="content">
+          <h3>Pusat Rumah Halaman</h3>
+          <p>
+            Kami memiliki halaman yang cukup luas, yang terdiri dari benyak
+            bangunan yang masih memoertahankan budaya Bali dengan ukiran yang
+            merupakan ciri khasnya.
+          </p>
+          <p>
+            Selain bangunan,pada halaman kami juga terdapat barbagai macam bunga
+            seperti kamboja, anggrek, dan pepohonan yang masih sangat hijau.
+          </p>
+          <p>
+            Tak hanya sebagai tempat yang indah, halaman kami juga menjadi
+            tempat untuk menghayati dan merayakan kehidupan. Di sinilah berbagai
+            upacara adat dilaksanakan, dan keluarga berkumpul untuk merayakan
+            kegiatan keagamaan dan budaya
+          </p>
+        </div>
+      </div>
+
+      <div class="row3">
+        <div class="about-img">
+          <img src="img/tentangkami/gedong.jpg" alt="Bale-Gedong" />
+        </div>
+        <div class="content">
+          <h3>Bale Gedong</h3>
+          <p>
+            Bale Gedong adalah sebuah bangunan tradisional di Bali yang memiliki
+            peran ganda. Pertama, digunakan sebagai tempat tinggal bagi anak
+            gadis yang belum menikah. Kedua, berfungsi sebagai tempat
+            penyimpanan benda-benda pusaka, seperti keris, tombak, dan barang
+            berharga lainnya. Di samping itu, juga menjadi lokasi untuk upacara
+            mesekeb bagi para remaja yang menjelang upacara Manusia Yadnya.
+          </p>
+          <p>
+            Dalam kehidupan sehari-hari, Bale Gedong menjadi rumah bagi anak
+            gadis yang belum menikah di Bali. Mereka tinggal di sana sebelum
+            memulai perjalanan hidup mereka sebagai keluarga.
+          </p>
+        </div>
+      </div>
+      <br />
+      <br />
+      <br />
+    </section>
+    <!-- About Section end -->
+
+    <!-- Menu Section start -->
+    <section id="menu" class="menu">
+      <h2><span>Kamar</span> Kami</h2>
+      <p>
+        Ini adalah beberapa kamar yang telah kami siapkan khusus untuk Anda
+        pesan! Silakan jelajahi pilihan kamar yang tersedia dan pesanlah kamar
+        impian Anda sekarang juga. Kami menantikan kedatangan Anda
+      </p>
+      <div class="container">
+        <div class="room">
+          <h2 class="room-title">Kamar No. 1</h2>
+          <p class="room-price">IDR 150K</p>
+          <div class="room-gallery">
+            <img src="img/banten.jpg" alt="Kamar 1 - Foto 1" class="room-img" />
+            <img src="img/banten.jpg" alt="Kamar 1 - Foto 2" class="room-img" />
+            <img src="img/banten.jpg" alt="Kamar 1 - Foto 3" class="room-img" />
+          </div>
+        </div>
+        <div class="room">
+          <h2 class="room-title">Kamar No. 2</h2>
+          <p class="room-price">IDR 200K</p>
+          <div class="room-gallery">
+            <img src="img/banten.jpg" alt="Kamar 2 - Foto 1" class="room-img" />
+            <img src="img/banten.jpg" alt="Kamar 2 - Foto 2" class="room-img" />
+            <img src="img/banten.jpg" alt="Kamar 2 - Foto 3" class="room-img" />
+          </div>
+        </div>
+        <div class="room">
+          <h2 class="room-title">Kamar No. 3</h2>
+          <p class="room-price">IDR 180K</p>
+          <div class="room-gallery">
+            <img src="img/banten.jpg" alt="Kamar 3 - Foto 1" class="room-img" />
+            <img src="img/banten.jpg" alt="Kamar 3 - Foto 2" class="room-img" />
+            <img src="img/banten.jpg" alt="Kamar 3 - Foto 3" class="room-img" />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Menu Section end -->
+
+    <!-- Product Section Start -->
+    <section class="products" id="products" x-data="products">
+      <h2><span>Produk Unggulan</span> Kami</h2>
+      <p>
+        Berikut adalah beberapa produk yang tersedia dan siap untuk Anda pesan.
+        Kami menyediakan beragam pilihan produk yang menarik dan berkualitas.
+        Silakan temukan produk yang Anda inginkan dan hubungi kami untuk
+        melakukan pemesanan. Kami siap membantu Anda!
+      </p>
+
+      <div class="row">
+        <template x-for="(item, index) in items" x-key="index">
+          <div class="product-card">
+            <div class="product-icons">
+              <a href="#" @click.prevent="$store.cart.add(item)">
+                <svg
+                  width="24"
+                  height="24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <use href="img/feather-sprite.svg#shopping-cart" />
+                </svg>
+              </a>
+              <a href="#" class="item-detail-button">
+                <svg
+                  width="24"
+                  height="24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <use href="img/feather-sprite.svg#eye" />
+                </svg>
+              </a>
+            </div>
+            <div class="product-image">
+              <img :src="`img/products/${item.img}`" :alt="item.name" />
+            </div>
+            <div class="product-content">
+              <h3 x-text="item.name"></h3>
+              <div class="product-stars">
+                <svg
+                  width="24"
+                  height="24"
+                  fill="currentColor"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <use href="img/feather-sprite.svg#star" />
+                </svg>
+                <svg
+                  width="24"
+                  height="24"
+                  fill="currentColor"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <use href="img/feather-sprite.svg#star" />
+                </svg>
+                <svg
+                  width="24"
+                  height="24"
+                  fill="currentColor"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <use href="img/feather-sprite.svg#star" />
+                </svg>
+                <svg
+                  width="24"
+                  height="24"
+                  fill="currentColor"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <use href="img/feather-sprite.svg#star" />
+                </svg>
+                <svg
+                  width="24"
+                  height="24"
+                  fill="currentColor"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <use href="img/feather-sprite.svg#star" />
+                </svg>
+              </div>
+              <div class="product-price">
+                <span x-text="rupiah(item.price)"></span>
+              </div>
+            </div>
+          </div>
+        </template>
+      </div>
+    </section>
+    <!-- Product Section End -->
+
+    <!-- Contact Section start -->
+    <section id="contact" class="contact">
+      <h2><span>Kontak</span> Kami</h2>
+      <p>
+        Silakan hubungi kami dengan mengisi informasi pribadi Anda di bawah ini.
+        Kami siap melayani Anda dengan sepenuh hati dan menjawab semua
+        pertanyaan yang Anda miliki.
+      </p>
+
+      <div class="row">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3946.282455548856!2d115.28459369999996!3d-8.471890999999992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd2197ff23acfd7%3A0x82d02a172881387!2sTri%20Upasedana%20House%20Ubud%20at%20Desa%20Wisata%20Kenderan!5e0!3m2!1sid!2sid!4v1699978570039!5m2!1sid!2sid"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          class="map"
+        ></iframe>
+
+        <form action="" id="dataDiri">
+          <div class="input-group">
+            <i data-feather="user"></i>
+            <input type="text" placeholder="nama" />
+          </div>
+          <div class="input-group">
+            <i data-feather="mail"></i>
+            <input type="email" placeholder="email" />
+          </div>
+          <div class="input-group">
+            <i data-feather="phone"></i>
+            <input type="number" placeholder="no hp" />
+          </div>
+          <button type="submit" class="btn">Kirim pesan!</button>
+        </form>
+      </div>
+    </section>
+    <!-- Contact Section end -->
+
+    <!-- Footer start -->
+    <footer>
+      <div class="socials">
+        <a href="https://www.instagram.com/triupasedanahouse/"
+          ><i data-feather="instagram"></i
+        ></a>
+        <a href="#"><i data-feather="home"></i></a>
+        <a href="https://web.facebook.com/laksmi46/?_rdc=1&_rdr"
+          ><i data-feather="facebook"></i
+        ></a>
+      </div>
+
+      <div class="links">
+        <a href="#hero">Home</a>
+        <a href="#about">Tentang Kami</a>
+        <a href="#menu">Menu</a>
+        <a href="#contact">Kontak</a>
+      </div>
+
+      <div class="credit">
+        <p>
+          Credit by <a href="">idewagedeagustinadharmaputra</a>. | &copy; 2023
+        </p>
+      </div>
+    </footer>
+    <!-- Footer end -->
+
+    <!-- Modal Box Item Detail start -->
+    <div class="modal" id="item-details-modal">
+      <div class="modal-container">
+        <a href="#" class="close-icon"><i data-feather="x"></i></a>
+        <div class="modal-content">
+          <img src="img/products/breakfast1.png" alt="Product 1" />
+          <div class="product-content">
+            <h3>Product 1</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Dignissimos accusantium ad praesentium ea odit, vel pariatur
+              sapiente unde quisquam adipisci dolore quam tempora molestiae
+              atque?
+            </p>
+            <div class="product-stars">
+              <i data-feather="star" class="star-full"></i>
+              <i data-feather="star" class="star-full"></i>
+              <i data-feather="star" class="star-full"></i>
+              <i data-feather="star" class="star-full"></i>
+              <i data-feather="star" class=""></i>
+            </div>
+            <div class="product-price">IDR 15K <span>IDR 30K</span></div>
+            <a href="#"
+              ><i data-feather="shopping-cart"></i><span>add to cart</span></a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Box Item Detail end -->
+
+    <!-- Feathers icons -->
+    <script>
+      feather.replace();
+    </script>
+
+    <!-- My Javascript -->
+    <script src="js/script.js"></script>
+  </body>
+</html>
