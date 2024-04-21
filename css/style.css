@@ -37,6 +37,31 @@ body {
   z-index: 9999;
 }
 
+.whatsapp-logo {
+  position: fixed;
+  bottom: 20px; /* Jarak dari bawah layar */
+  right: 20px; /* Jarak dari kanan layar */
+  width: 200px;
+  height: 80px;
+  background-image: url("../img/whatsapp.png"); /* Ganti dengan URL gambar logo WhatsApp Anda */
+  background-size: contain; /* Mengatur agar gambar diatur agar selalu cocok dalam kotak yang ditetapkan tanpa merubah proporsinya */
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 768px) {
+  .whatsapp-logo {
+    width: 120px;
+    height: 50px;
+    bottom: 10px; /* Mengatur ulang posisi untuk layar yang lebih kecil */
+    right: 10px; /* Mengatur ulang posisi untuk layar yang lebih kecil */
+  }
+}
+
+/* Hover effect untuk logo WhatsApp */
+.whatsapp-logo:hover {
+  transform: scale(1.1); /* Memperbesar ukuran saat hover */
+}
+
 .navbar .navbar-logo {
   font-size: 2rem;
   font-weight: 700;
