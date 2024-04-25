@@ -2,9 +2,9 @@ document.addEventListener("alpine:init", () => {
   Alpine.data("products", () => ({
     items: [
       { id: 1, name: "Mie Goreng", img: "mie-goreng.jpg", price: 15_000 },
-      { id: 2, name: "Nasi Goreng", img: "nasi-goreng.jpg", price: 20_000 },
-      { id: 3, name: "Bubur Bali", img: "bubur-bali.jpg", price: 10_000 },
-      { id: 4, name: "Roti Telur", img: "roti-telur.jpg", price: 12_000 },
+      { id: 2, name: "Nasi Goreng", img: "nasi-goreng.jpg", price: 25_000 },
+      { id: 3, name: "Bubur Bali", img: "bubur-bali.jpg", price: 20_000 },
+      { id: 4, name: "Roti Telur", img: "roti-telur.jpg", price: 15_000 },
       { id: 5, name: "Jaja Bali", img: "jaja-bali.jpg", price: 20_000 },
     ],
   }));
@@ -83,7 +83,7 @@ checkoutButton.addEventListener("click", function (e) {
 
   const message = formatMessage(objData);
   window.open(
-    "https://wa.me/6281338764581?text=" + encodeURIComponent(message)
+    "https://wa.me/6285237123026?text=" + encodeURIComponent(message)
   );
 });
 

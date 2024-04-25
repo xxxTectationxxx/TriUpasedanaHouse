@@ -106,7 +106,7 @@ body {
   color: var(--primary);
 }
 
-#hamburger-menu {
+#hamburger-kamar {
   display: none;
 }
 
@@ -337,7 +337,7 @@ body {
 /* About section */
 
 .about,
-.menu,
+.kamar,
 .products {
   padding: 8rem 7% 1.4rem;
   min-height: 100vh;
@@ -349,7 +349,7 @@ body {
 }
 
 .about h2,
-.menu h2,
+.kamar h2,
 .products h2,
 .contact h2 {
   text-align: center;
@@ -358,7 +358,7 @@ body {
 }
 
 .about h2 span,
-.menu h2 span,
+.kamar h2 span,
 .products h2 span,
 .contact h2 span {
   color: var(--primary);
@@ -473,14 +473,14 @@ body {
   line-height: 1.6;
 }
 
-/* Menu section  */
-.menu h2,
+/* kamar section  */
+.kamar h2,
 .contact h2 {
   margin-bottom: 1rem;
   margin-top: 1rem;
 }
 
-.menu p,
+.kamar p,
 .contact p,
 .products p {
   text-align: center;
@@ -510,17 +510,16 @@ body {
 
 .room-gallery {
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
   justify-content: space-between;
 }
 
 .room-img {
-  width: 35%;
+  width: 30%;
   border-radius: 10px;
-}
-
-.room-price {
-  font-weight: bold;
-  padding-bottom: 2rem;
+  margin: 0.5rem;
 }
 
 /* Responsiveness */
@@ -767,7 +766,7 @@ footer .credit a {
     font-size: 62.5%;
   }
 
-  #hamburger-menu {
+  #hamburger-kamar {
     display: inline-block;
   }
 
@@ -840,7 +839,7 @@ footer .credit a {
     font-size: 1.6rem;
   }
 
-  .menu p {
+  .kamar p {
     font-size: 1.2rem;
   }
 

@@ -1,7 +1,7 @@
-// Toggle class active untuk humberger menu
+// Toggle class active untuk humberger kamar
 const navbarNav = document.querySelector(".navbar-nav");
-// ketika hamburger menu di klik
-document.querySelector("#hamburger-menu").onclick = () => {
+// ketika hamburger kamar di klik
+document.querySelector("#hamburger-kamar").onclick = () => {
   navbarNav.classList.toggle("active");
 };
 
@@ -27,7 +27,7 @@ shoppingCartOut.onclick = (e) => {
 };
 
 // Klik diluar elemen
-const hamburger = document.querySelector("#hamburger-menu");
+const hamburger = document.querySelector("#hamburger-kamar");
 const searchButton = document.querySelector("#search-button");
 
 document.addEventListener("click", function (e) {
@@ -43,16 +43,16 @@ document.addEventListener("click", function (e) {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  const hamburgerMenu = document.getElementById("hamburger-menu");
+  const hamburgerKamar = document.getElementById("hamburger-kamar");
 
-  hamburgerMenu.addEventListener("click", function (event) {
+  hamburgerKamar.addEventListener("click", function (event) {
     event.preventDefault(); // Mencegah perilaku default dari tautan
 
-    // Tambahkan logika di sini untuk menampilkan menu navigasi yang sesuai
-    // Misalnya, mungkin Anda akan menampilkan menu samping atau menu dropdown
+    // Tambahkan logika di sini untuk menampilkan kamar navigasi yang sesuai
+    // Misalnya, mungkin Anda akan menampilkan kamar samping atau kamar dropdown
 
     // Contoh sederhana menampilkan pesan di konsol
-    console.log("Tombol hamburger-menu ditekan!");
+    console.log("Tombol hamburger-kamar ditekan!");
   });
 });
 
@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const pesan = `Halo, Nama saya ${nama} dengan Email ${email} dan nomor HP ${noHp}. Saya ingin bertanya terkait `;
 
     // Membuat URL untuk mengirim pesan melalui WhatsApp
-    const whatsappUrl = `https://wa.me/6281338764581?text=${encodeURIComponent(
+    const whatsappUrl = `https://wa.me/6285237123026?text=${encodeURIComponent(
       pesan
     )}`;
 
