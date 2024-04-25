@@ -43,9 +43,9 @@ document.addEventListener("click", function (e) {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  const hamburgerKamar = document.getElementById("hamburger-kamar");
+  const hamburgerkamar = document.getElementById("hamburger-kamar");
 
-  hamburgerKamar.addEventListener("click", function (event) {
+  hamburgerkamar.addEventListener("click", function (event) {
     event.preventDefault(); // Mencegah perilaku default dari tautan
 
     // Tambahkan logika di sini untuk menampilkan kamar navigasi yang sesuai
