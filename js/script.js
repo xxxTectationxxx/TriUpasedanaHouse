@@ -82,6 +82,48 @@ window.onclick = (e) => {
   }
 };
 
+// Kamar
+let slideIndex = 0;
+showSlides(slideIndex);
+
+// Fungsi untuk menampilkan slide
+function showSlides(n) {
+  let slides = document.getElementsByClassName("mySlides");
+  if (n >= slides.length) {
+    slideIndex = 0;
+  }
+  if (n < 0) {
+    slideIndex = slides.length - 1;
+  }
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slides[slideIndex].style.display = "block";
+}
+
+// Fungsi untuk mengubah slide
+function plusSlides(n) {
+  showSlides((slideIndex += n));
+}
+
+// Event listeners untuk tombol navigasi
+document.querySelector(".prev").addEventListener("click", () => {
+  plusSlides(-1);
+});
+
+document.querySelector(".next").addEventListener("click", () => {
+  plusSlides(1);
+});
+
+// Tombol partial-slide untuk pindah slide
+document.getElementById("left-slide").addEventListener("click", () => {
+  plusSlides(-1);
+});
+
+document.getElementById("right-slide").addEventListener("click", () => {
+  plusSlides(1);
+});
+
 // Mengirim input Data Diri ke WhatsApp
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("dataDiri");

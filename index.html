@@ -37,14 +37,13 @@
         <a href="#hero">Home</a>
         <a href="#about">Tentang Kami</a>
         <a href="#kamar">Kamar</a>
-        <a href="#products">Produk</a>
         <a href="#contact">Kontak</a>
       </div>
 
       <div class="navbar-extra">
-        <a href="#" id="search-button"><i data-feather="search"></i></a>
+        <a href="#" id="search-button"><i data-feather=""></i></a>
         <a href="#" id="shopping-cart-button">
-          <i data-feather="shopping-cart"></i>
+          <i data-feather="\"></i>
           <span
             class="quantity-badge"
             x-show="$store.cart.quantity"
@@ -53,78 +52,6 @@
         </a>
         <a href="#" id="hamburger-kamar"><i data-feather="menu"></i></a>
       </div>
-
-      <!-- Search Form start -->
-      <div class="search-form">
-        <input type="search" id="search-box" placeholder="search here..." />
-        <label for="search-box"><i data-feather="search"></i></label>
-      </div>
-
-      <!-- Search Form end -->
-
-      <!-- Shopping Cart start -->
-      <div class="shopping-cart">
-        <template x-for="(item, index) in $store.cart.items" x-key="index">
-          <div class="cart-item">
-            <img :src="`img/products/${item.img}`" :alt="item.name" />
-            <div class="item-detail">
-              <h3 x-text="item.name"></h3>
-              <div class="item-price">
-                <span x-text="rupiah(item.price)"></span> &times;
-                <button id="remove" @click="$store.cart.remove(item.id)">
-                  &minus;
-                </button>
-                <span x-text="item.quantity"></span>
-                <button id="add" @click="$store.cart.add(item)">&plus;</button>
-                &equals;
-                <span x-text="rupiah(item.total)"></span>
-              </div>
-            </div>
-          </div>
-        </template>
-        <h4 x-show="!$store.cart.items.length" style="margin-top: 1rem">
-          Cart Is Empty
-        </h4>
-        <h4 x-show="$store.cart.items.length">
-          Total : <span x-text="rupiah($store.cart.total)"></span>
-        </h4>
-
-        <!-- Form Start -->
-        <div class="form-container" x-show="$store.cart.items.length">
-          <form action="" id="checkoutForm">
-            <input
-              type="hidden"
-              name="items"
-              x-model="JSON.stringify($store.cart.items)"
-            />
-            <input type="hidden" name="items" x-model="$store.cart.total" />
-            <h5>Customer Detail</h5>
-            <label for="name">
-              <span>Nama</span>
-              <input type="text" name="name" id="name" />
-            </label>
-            <label for="email">
-              <span>Email</span>
-              <input type="email" name="email" id="email" />
-            </label>
-            <label for="phone">
-              <span>Phone</span>
-              <input type="number" name="phone" id="phone" autocomplete="off" />
-            </label>
-
-            <button
-              class="checkout-button disabled"
-              type="submit"
-              id="checkout-button"
-              value="checkout"
-            >
-              Checkout
-            </button>
-          </form>
-        </div>
-        <!-- Form End -->
-      </div>
-      <!-- Shopping Cart end -->
     </nav>
     <!-- Navbar End -->
 
@@ -156,13 +83,13 @@
         <div class="content">
           <h3>Kenapa Rumah Kami</h3>
           <p>
-            Rumah kami masih sangat membepertahankan budaya bali, bisa dilihat
+            Rumah kami masih sangat mempertahankan budaya bali, bisa dilihat
             dari pintu masuk kami yang masih menggunakan ukiran bernuasa bali.
           </p>
           <p>
-            Pada pintu masuk kami pun terdapat gapura yang disampinya, Tak hanya
-            itu, gapura yang menghiasi pintu masuk kami juga menjadi titik fokus
-            yang menawan. Dikelilingi oleh pepohonan yang rimbun, gapura
+            Pada pintu masuk kami pun terdapat gapura yang disampingnya, Tak
+            hanya itu, gapura yang menghiasi pintu masuk kami juga menjadi titik
+            fokus yang menawan. Dikelilingi oleh pepohonan yang rimbun, gapura
             tersebut memberikan kesan sejuk dan menyambut setiap pengunjung
             dengan hangatnya. Aura damai yang tercipta dari alam sekitar
             mengundang pengunjung untuk memasuki dunia kami yang penuh dengan
@@ -233,184 +160,66 @@
         pesan! Silakan jelajahi pilihan kamar yang tersedia dan pesanlah kamar
         impian Anda sekarang juga. Kami menantikan kedatangan Anda
       </p>
+      <br>
       <div class="container">
-        <div class="room">
-          <div class="room-gallery">
-            <img
-              src="img/kamar/kamar2-1.jpg"
-              alt="Kamar 1 - Foto 1"
-              class="room-img"
-            />
-            <img
-              src="img/kamar/kamar2-2.jpg"
-              alt="Kamar 1 - Foto 2"
-              class="room-img"
-            />
-            <img
-              src="img/kamar/kamar2-3.jpg"
-              alt="Kamar 1 - Foto 3"
-              class="room-img"
-            />
+        <div class="slideshow-container">
+          <img id="left-slide" class="partial-slide left" src="img/previous.png" alt="Previous slide">
+          <img id="right-slide" class="partial-slide right" src="img/next.png" alt="Next slide">
+
+          <div class="mySlides fade">
+            <img src="img/kamar/room1-1n.jpg" alt="wastafel" />
+            <div class="text">wastafel</div>
+          </div>
+  
+          <div class="mySlides fade">
+            <img src="img/kamar/room1-2n.jpg" alt="upacara tradisional" />
+            <div class="text">upacara tradisional</div>
+          </div>
+  
+          <div class="mySlides fade">
+            <img src="img/kamar/room1-3n.jpg" alt="bunga anggrek" />
+            <div class="text">bunga anggrek</div>
+          </div>
+  
+          <div class="mySlides fade">
+            <img src="img/kamar/room1-4n.jpg" alt="toilet" />
+            <div class="text">toilet</div>
+          </div>
+  
+          <div class="mySlides fade">
+            <img src="img/kamar/room1-5n.jpg" alt="depan kamar" />
+            <div class="text">depan kamar</div>
+          </div>
+
+          <div class="mySlides fade">
+            <img src="img/kamar/room1-6n.jpg" alt="dewi saraswati" />
+            <div class="text">dewi saraswati</div>
+          </div>
+
+          <div class="mySlides fade">
+            <img src="img/kamar/room1-7n.jpg" alt="tangan budha" />
+            <div class="text">tangan budha</div>
+          </div>
+
+          <div class="mySlides fade">
+            <img src="img/kamar/room1-8n.jpg" alt="ukiran bali" />
+            <div class="text">ukiran bali</div>
+          </div>
+
+          <div class="mySlides fade">
+            <img src="img/kamar/room1-9n.jpg" alt="pintu ukiran bali" />
+            <div class="text">tradisional</div>
+          </div>
+
+          <div class="mySlides fade">
+            <img src="img/kamar/room1-10n.jpg" alt="dalam kamar" />
+            <div class="text">dalam kamar</div>
           </div>
         </div>
-        <div class="room">
-          <div class="room-gallery">
-            <img
-              src="img/kamar/kamar3-1.jpg"
-              alt="Kamar 2 - Foto 1"
-              class="room-img"
-            />
-            <img
-              src="img/kamar/kamar3-2.jpg"
-              alt="Kamar 2 - Foto 2"
-              class="room-img"
-            />
-            <img
-              src="img/kamar/kamar3-3.jpg"
-              alt="Kamar 2 - Foto 3"
-              class="room-img"
-            />
-          </div>
-        </div>
-        <div class="room">
-          <div class="room-gallery">
-            <img
-              src="img/kamar/kamar4-1.jpg"
-              alt="Kamar 3 - Foto 1"
-              class="room-img"
-            />
-            <img
-              src="img/kamar/kamar4-2.jpg"
-              alt="Kamar 3 - Foto 2"
-              class="room-img"
-            />
-            <img
-              src="img/kamar/kamar4-3.jpg"
-              alt="Kamar 3 - Foto 3"
-              class="room-img"
-            />
-          </div>
-        </div>
-      </div>
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
     </section>
     <!-- Kamar Section end -->
-
-    <!-- Product Section Start -->
-    <section class="products" id="products" x-data="products">
-      <h2><span>Produk Unggulan</span> Kami</h2>
-      <p>
-        Berikut adalah beberapa produk yang tersedia dan siap untuk Anda pesan.
-        Kami menyediakan beragam pilihan produk yang menarik dan berkualitas.
-        Silakan temukan produk yang Anda inginkan dan hubungi kami untuk
-        melakukan pemesanan. Kami siap membantu Anda!
-      </p>
-
-      <div class="row">
-        <template x-for="(item, index) in items" x-key="index">
-          <div class="product-card">
-            <div class="product-icons">
-              <a href="#" @click.prevent="$store.cart.add(item)">
-                <svg
-                  width="24"
-                  height="24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <use href="img/feather-sprite.svg#shopping-cart" />
-                </svg>
-              </a>
-              <a
-                href="#"
-                class="item-detail-button"
-                onclick="event.preventDefault()"
-              >
-                <svg
-                  width="24"
-                  height="24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <use href="img/feather-sprite.svg#eye" />
-                </svg>
-              </a>
-            </div>
-            <div class="product-image">
-              <img :src="`img/products/${item.img}`" :alt="item.name" />
-            </div>
-            <div class="product-content">
-              <h3 x-text="item.name"></h3>
-              <div class="product-stars">
-                <svg
-                  width="24"
-                  height="24"
-                  fill="currentColor"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <use href="img/feather-sprite.svg#star" />
-                </svg>
-                <svg
-                  width="24"
-                  height="24"
-                  fill="currentColor"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <use href="img/feather-sprite.svg#star" />
-                </svg>
-                <svg
-                  width="24"
-                  height="24"
-                  fill="currentColor"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <use href="img/feather-sprite.svg#star" />
-                </svg>
-                <svg
-                  width="24"
-                  height="24"
-                  fill="currentColor"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <use href="img/feather-sprite.svg#star" />
-                </svg>
-                <svg
-                  width="24"
-                  height="24"
-                  fill="currentColor"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <use href="img/feather-sprite.svg#star" />
-                </svg>
-              </div>
-              <div class="product-price">
-                <span x-text="rupiah(item.price)"></span>
-              </div>
-            </div>
-          </div>
-        </template>
-      </div>
-    </section>
-    <!-- Product Section End -->
 
     <!-- Contact Section start -->
     <section id="contact" class="contact">

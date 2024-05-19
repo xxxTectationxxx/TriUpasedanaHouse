@@ -337,8 +337,7 @@ body {
 /* About section */
 
 .about,
-.kamar,
-.products {
+.kamar {
   padding: 8rem 7% 1.4rem;
   min-height: 100vh;
 }
@@ -350,7 +349,6 @@ body {
 
 .about h2,
 .kamar h2,
-.products h2,
 .contact h2 {
   text-align: center;
   font-size: 2.6rem;
@@ -358,9 +356,7 @@ body {
 }
 
 .about h2 span,
-.kamar h2 span,
-.products h2 span,
-.contact h2 span {
+.kamar h2 span .contact h2 span {
   color: var(--primary);
 }
 
@@ -481,8 +477,7 @@ body {
 }
 
 .kamar p,
-.contact p,
-.products p {
+.contact p {
   text-align: center;
   max-width: 50rem;
   margin: auto;
@@ -522,6 +517,111 @@ body {
   margin: 0.5rem;
 }
 
+/* Container untuk slideshow */
+.slideshow-container {
+  position: relative;
+  max-width: 100%;
+  margin: auto;
+  overflow: hidden;
+}
+
+/* Gambar dalam slideshow */
+.mySlides img {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 100%; /* Menjaga rasio aspek gambar */
+}
+
+/* Teks pada gambar */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* Tombol navigasi */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+.partial-slide {
+  filter: brightness(0) invert(1); /* Ubah ikon menjadi warna putih */
+}
+
+/* Kembalikan warna asli saat dihover */
+.partial-slide:hover {
+  filter: none;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Efek fade */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Tombol partial-slide */
+.partial-slide {
+  width: 5%; /* Ubah ukuran sesuai kebutuhan */
+  height: auto;
+  opacity: 0.5;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.left {
+  left: 0;
+}
+
+.right {
+  right: 0;
+}
+
+/* Responsif */
+@media screen and (max-width: 768px) {
+  .partial-slide {
+    width: 10%; /* Ubah ukuran sesuai kebutuhan */
+  }
+}
+
 /* Responsiveness */
 @media only screen and (max-width: 768px) {
   .room-gallery {
@@ -533,69 +633,6 @@ body {
     width: 80%;
     margin-bottom: 1rem;
   }
-}
-
-/* Products Section */
-.products .row {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-  gap: 1.5rem;
-  margin-top: 4rem;
-}
-
-.products .product-card {
-  text-align: center;
-  border: 1px solid #666;
-  padding: 2rem;
-}
-
-.products .product-icons {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-.products .product-icons a {
-  width: 4rem;
-  height: 4rem;
-  color: #fff;
-  margin: 0.3rem;
-  border: 1px solid #666;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.products .product-icons a:hover {
-  background-color: var(--primary);
-  border: 1px solid var(--primary);
-}
-
-.products .product-image {
-  padding: 1rem 0;
-}
-
-.products .product-image img {
-  height: 25rem;
-}
-
-.products .product-content h3 {
-  font-size: 2rem;
-}
-
-.products .product-stars {
-  font-size: 1.7rem;
-  padding: 0.8rem;
-}
-
-.products .product-stars .star-full {
-  fill: #fff;
-}
-
-.products .product-price {
-  font-size: 1.7rem;
-  font-weight: bold;
 }
 
 /* Contact Section*/
@@ -778,6 +815,9 @@ footer .credit a {
     width: 30rem;
     height: 100vh;
     transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
   }
 
   .navbar .navbar-nav.active {
@@ -790,6 +830,7 @@ footer .credit a {
     margin: 1.5rem;
     padding: 0.5rem;
     font-size: 2rem;
+    text-align: center;
   }
 
   .navbar .navbar-nav a::after {
